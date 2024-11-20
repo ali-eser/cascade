@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon index.ts",
     "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,6 +17,8 @@
     "@types/eslint__js": "^8.42.3",
     "@types/express": "^5.0.0",
     "eslint": "^9.15.0",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.15.0"
   },
