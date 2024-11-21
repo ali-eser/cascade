@@ -1,12 +1,12 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 
 const router = express.Router();
 
-router.get('/', (_req, res) => {
+router.get('/', (_req: Request, res: Response) => {
     res.send("Fetching all users...");
 });
 
-router.post('/', (_req, res) => {
+router.post('/', (_req: Request, res: Response) => {
    res.send('Creating new user...');
 });
 
