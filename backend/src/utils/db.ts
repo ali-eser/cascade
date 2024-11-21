@@ -1,12 +1,12 @@
-import sequelize, {Sequelize} from "sequelize";
+import { Sequelize } from "sequelize-typescript";
 
-const {
+import {
     DATABASE_HOST,
     DATABASE_PASSWORD,
     DATABASE_USER,
     DATABASE_NAME,
     DATABASE_PORT
-} = require("./config");
+} from "./config";
 
 const sequelize = new Sequelize(
     `postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}`, {
