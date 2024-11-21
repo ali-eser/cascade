@@ -1,41 +1,40 @@
-import { Model, DataTypes } from 'sequelize';
-import sequelize from "../utils/db";
+import { Model, DataType, Table, Column } from 'sequelize-typescript';
 
-class User extends Model {
-    declare id: number;
-    declare username: string;
-}
+@Table({
+    tableName: 'users',
+    timestamps: true,
+    underscored: true
+})
 
-User.init({
-    id: {
-        type: DataTypes.INTEGER,
+export class User extends Model {
+    @Column({
         primaryKey: true,
-        autoIncrement: true
-    },
-    username: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        collate: "utf8_general_ci"
-    },
-    email: {
-        type: DataTypes.STRING,
+        autoIncrement: true,
+    })
+    id!: number;
+
+    @Column({
+        type: DataType.STRING,
         allowNull: false,
         unique: true
-    },
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    passwordHash: {
-        type: DataTypes.STRING,
-        allowNull: false
-    }
-}, {
-    sequelize,
-    underscored: true,
-    timestamps: false,
-    modelName: "user"
-});
+    })
+    username!: string;
 
-export default User;
+    @Column({
+        type: DataType.STRING,
+        allowNull: false,
+        unique: true
+    })
+    email!: string;
+
+    @Column({
+        type: DataType.STRING,
+        allowNull: false
+    })
+    name!: string;
+    @Column({
+        type: DataType.STRING,
+        allowNull: false
+    })
+    passwordHash!: string;
+}
