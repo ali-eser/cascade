@@ -1,13 +1,13 @@
-import express, { Request, Response } from 'express';
+import express from "express";
 
 const router: express.Router = express.Router();
 
-router.get('/', (_req: Request, res: Response) => {
+router.get("/", async (_req: express.Request, res: express.Response) => {
     res.send("Fetching all users...");
 });
 
-router.post('/', (_req: Request, res: Response) => {
-   res.send('Creating new user...');
+router.post("/", async (_req: express.Request, res: express.Response) => {
+   res.send("Creating new user...");
 });
 
 export default router;
