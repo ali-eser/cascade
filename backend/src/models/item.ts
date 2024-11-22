@@ -1,5 +1,5 @@
-import {Model, DataType, Table, Column, ForeignKey, BelongsTo} from 'sequelize-typescript';
-import { User } from "./user";
+import { Model, DataType, Table, Column, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import User from "./user";
 
 @Table({
     tableName: 'items',
@@ -7,7 +7,7 @@ import { User } from "./user";
     underscored: true
 })
 
-export class Item extends Model {
+export default class Item extends Model {
     @Column({
         primaryKey: true,
         autoIncrement: true,
@@ -25,6 +25,12 @@ export class Item extends Model {
         allowNull: true
     })
     description!: string;
+
+    @Column({
+        type: DataType.TEXT,
+        allowNull: true
+    })
+    review!: string;
 
     @Column({
         type: DataType.BLOB,
