@@ -10,14 +10,14 @@ import {
 
 const sequelize = new Sequelize(
     `postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}`, {
-        dialect: "postgres",
-        logging: false
+        dialect: "postgres"
     }
 );
 
 const connectToDatabase = async () => {
     try {
         await sequelize.authenticate();
+        await sequelize.sync({ logging: console.log });
         console.log(`Connected to database: "${DATABASE_NAME}"`);
     } catch (error) {
         console.error(error);
