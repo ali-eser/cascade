@@ -18,7 +18,7 @@ const sequelize = new Sequelize(
 const connectToDatabase = async () => {
     try {
         await sequelize.authenticate();
-        console.log("Connected to database");
+        console.log(`Connected to database: "${DATABASE_NAME}"`);
     } catch (error) {
         console.error(error);
         return process.exit(1);
@@ -26,4 +26,4 @@ const connectToDatabase = async () => {
     return null;
 }
 
-export default { connectToDatabase, sequelize };
+export default connectToDatabase;
