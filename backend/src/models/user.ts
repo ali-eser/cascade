@@ -6,7 +6,7 @@ import { Model, DataType, Table, Column } from 'sequelize-typescript';
     underscored: true
 })
 
-export class User extends Model {
+export default class User extends Model {
     @Column({
         primaryKey: true,
         autoIncrement: true,
@@ -32,7 +32,7 @@ export class User extends Model {
         allowNull: false
     })
     name!: string;
-    
+
     @Column({
         type: DataType.STRING,
         allowNull: false
