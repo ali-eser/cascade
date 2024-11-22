@@ -5,10 +5,10 @@ import { Model, DataType, Table, Column } from 'sequelize-typescript';
     timestamps: true,
     underscored: true
 })
-
-export default class User extends Model {
+class User extends Model {
     @Column({
         primaryKey: true,
+        type: DataType.INTEGER,
         autoIncrement: true,
     })
     id!: number;
@@ -39,3 +39,5 @@ export default class User extends Model {
     })
     passwordHash!: string;
 }
+
+export default User;
