@@ -32,6 +32,7 @@ export class User extends Model {
         allowNull: false
     })
     name!: string;
+    
     @Column({
         type: DataType.STRING,
         allowNull: false
