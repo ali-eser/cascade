@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 
-const router = express.Router();
+const router: express.Router = express.Router();
 
 router.get('/', (_req: Request, res: Response) => {
     res.send("Fetching all users...");
