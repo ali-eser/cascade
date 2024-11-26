@@ -5,10 +5,21 @@ const usersRouter: express.Router = express.Router();
 
 usersRouter.get("/", async (_req: express.Request, res: express.Response) => {
     try {
-        const users = await userService.getUsers();
+        const users = await userService.getUser();
         res.status(200).json(users);
     } catch (e) {
-        res.status(500).json({ e });
+        res.status(500).json({ errMessage: e });
+    }
+});
+
+usersRouter.get("/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const user = await userService.getUser(parseInt(id));
+        res.status(200).json(user);
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({ errMessage: e });
     }
 });
 
@@ -19,9 +30,19 @@ usersRouter.post("/", async (req: express.Request, res: express.Response) => {
 
         res.status(201).json(newUser);
     } catch (e) {
-        res.status(500).json({ e });
+        res.status(500).json({ errMessage: e });
     }
 
+});
+
+usersRouter.delete("/:id", async (req: express.Request, res: express.Response) => {
+    try {
+        const { id } = req.params;
+        await userService.removeUser(parseInt(id))
+        res.status(200).json({ message: "User removed successfully." });
+    } catch (e) {
+        res.status(500).json({ errMessage: e });
+    }
 });
 
 export default usersRouter;
