@@ -1,13 +1,19 @@
 import express from "express";
+import itemService from "../services/items";
 
-const router: express.Router = express.Router();
+const itemsRouter: express.Router = express.Router();
 
-router.get("/", async (_req: express.Request, res: express.Response) => {
-    res.send("Fetching all items...");
+itemsRouter.get("/", async (_req: express.Request, res: express.Response) => {
+    try {
+        const items = await itemService.getItem()
+        res.status(200).json(items)
+    } catch (e) {
+        res.status(500).json({ errMessage: e });
+    }
 });
 
-router.post("/", async (_req: express.Request, res: express.Response) => {
+itemsRouter.post("/", async (_req: express.Request, res: express.Response) => {
    res.send("Adding new item...");
 });
 
-export default router;
+export default itemsRouter;
