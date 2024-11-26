@@ -1,15 +1,16 @@
 import bcrypt from "bcrypt";
-import {User} from "../utils/db";
+import { User } from "../utils/db";
 
 const getUser = async (id? :number) => {
-    if (id) {
-        try {
-            return await User.findByPk(id)
-        } catch (e) {
-            console.error(e);
+    try {
+        if (id) {
+            return await User.findByPk(id);
         }
+        return await User.findAll({});
+    } catch (e) {
+        console.error(e);
+        return null;
     }
-    return await User.findAll({});
 };
 
 const addUser = async (username: string, email: string, name: string, password: string) => {
@@ -24,8 +25,13 @@ const addUser = async (username: string, email: string, name: string, password: 
     });
 };
 
-/*const removeUser = async (id :number) => {
+const removeUser = async (id :number) => {
+    try {
+        return await User.destroy({ where: { id } });
+    } catch (e) {
+        console.error(e);
+        return e;
+    }
+};
 
-};*/
-
-export default { getUser, addUser };
+export default { addUser, getUser, removeUser };
