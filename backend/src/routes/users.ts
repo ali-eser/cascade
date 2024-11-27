@@ -5,7 +5,7 @@ const usersRouter: express.Router = express.Router();
 
 usersRouter.get("/", async (_req: express.Request, res: express.Response) => {
     try {
-        const users = await userService.getUser();
+        const users = await userService.fetchUser();
         res.status(200).json(users);
     } catch (e) {
         res.status(500).json({ errMessage: e });
@@ -15,7 +15,7 @@ usersRouter.get("/", async (_req: express.Request, res: express.Response) => {
 usersRouter.get("/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        const user = await userService.getUser(parseInt(id));
+        const user = await userService.fetchUser(parseInt(id));
         res.status(200).json(user);
     } catch (e) {
         console.error(e);
