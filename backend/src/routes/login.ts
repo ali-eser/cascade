@@ -1,4 +1,3 @@
-import jwt from 'jsonwebtoken';
 import loginService from '../services/login';
 import express from "express";
 
