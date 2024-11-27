@@ -1,6 +1,6 @@
 import { Item } from "../utils/db";
 
-const getItem = async (id?: number) => {
+const fetchItem = async (id?: number) => {
     try {
         if (id) {
             return await Item.findByPk(id);
@@ -12,4 +12,4 @@ const getItem = async (id?: number) => {
     }
 };
 
-export default { getItem }
+export default { fetchItem }
