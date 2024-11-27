@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import { User } from "../utils/db";
 
-const getUser = async (id? :number) => {
+const fetchUser = async (id? :number) => {
     try {
         if (id) {
             return await User.findByPk(id);
@@ -34,4 +34,4 @@ const removeUser = async (id :number) => {
     }
 };
 
-export default { addUser, getUser, removeUser };
+export default { addUser, fetchUser, removeUser };
