@@ -13,7 +13,7 @@ itemsRouter.get("/", async (_req: express.Request, res: express.Response) => {
 });
 
 itemsRouter.post("/", async (_req: express.Request, res: express.Response) => {
-   res.send("Adding new item...");
+    res.send("Adding new item...");
 });
 
 export default itemsRouter;
