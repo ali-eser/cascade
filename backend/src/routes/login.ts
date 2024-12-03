@@ -6,5 +6,12 @@ const loginRouter = express.Router();
 loginRouter.post("/", async (req, res) => {
   const { username, password } = req.body;
 
-  res.status(200).send(loginService.login(username, password))
+  try {
+    const user = await loginService.login(username, password);
+    res.status(200).json(user);
+  } catch (e) {
+    res.status(500).json({ errMessage: e });
+  }
 })
+
+export default loginRouter;
