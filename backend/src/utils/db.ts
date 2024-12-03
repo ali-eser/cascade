@@ -3,21 +3,21 @@ import User from "../models/user";
 import Item from "../models/item";
 
 import {
-    DATABASE_HOST,
-    DATABASE_PASSWORD,
-    DATABASE_USER,
-    DATABASE_NAME,
-    DATABASE_PORT
+  DATABASE_HOST,
+  DATABASE_PASSWORD,
+  DATABASE_USER,
+  DATABASE_NAME,
+  DATABASE_PORT
 } from "./config";
 
 console.log("Starting DB");
 
 const sequelize = new Sequelize(
-    `postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}`, {
-        dialect: "postgres",
-        logging: false,
-        models: [User, Item]
-    }
+  `postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}`, {
+    dialect: "postgres",
+    logging: false,
+    models: [User, Item]
+  }
 );
 
 console.log("Database models added: ", sequelize.models);
@@ -29,14 +29,14 @@ User.sync({alter: true}).then(r => console.log(r));
 Item.sync({alter: true}).then(r => console.log(r));
 
 export const connectToDatabase = async () => {
-    try {
-        await sequelize.authenticate();
-        console.log(`Connected to database: "${DATABASE_NAME}"`);
-    } catch (error) {
-        console.error(error);
-        return process.exit(1);
-    }
-    return null;
+  try {
+    await sequelize.authenticate();
+    console.log(`Connected to database: "${DATABASE_NAME}"`);
+  } catch (error) {
+    console.error(error);
+    return process.exit(1);
+  }
+  return null;
 }
 
 export { sequelize, User, Item };
