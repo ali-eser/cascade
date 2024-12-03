@@ -4,7 +4,7 @@ import express from "express";
 const loginRouter = express.Router();
 
 loginRouter.post("/", async (req, res) => {
-    const { username, password } = req.body;
+  const { username, password } = req.body;
 
-    res.status(200).send(loginService.login(username, password))
+  res.status(200).send(loginService.login(username, password))
 })
