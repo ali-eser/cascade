@@ -8,7 +8,7 @@ const LoginForm = () => {
   return (
     <div>
       <h1>Cascade Login</h1>
-      <form>
+      <form className="login-form">
         <input type="text"
                name="username"
                value={username}
@@ -21,6 +21,7 @@ const LoginForm = () => {
                onChange={(e) => setPassword(e.target.value)}
                placeholder="Password"
         />
+        <button type="submit">Login</button>
       </form>
     </div>
   )
