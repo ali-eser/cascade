@@ -2,47 +2,47 @@ import { Model, DataType, Table, Column, ForeignKey, BelongsTo } from 'sequelize
 import User from "./user";
 
 @Table({
-    tableName: 'items',
-    timestamps: true,
-    underscored: true
+  tableName: 'items',
+  timestamps: true,
+  underscored: true
 })
 
 export default class Item extends Model {
-    @Column({
-        primaryKey: true,
-        autoIncrement: true,
-    })
-    id!: number;
+  @Column({
+    primaryKey: true,
+    autoIncrement: true,
+  })
+  id!: number;
 
-    @Column({
-        type: DataType.STRING,
-        allowNull: false
-    })
-    itemName!: string;
+  @Column({
+    type: DataType.STRING,
+    allowNull: false
+  })
+  itemName!: string;
 
-    @Column({
-        type: DataType.TEXT,
-        allowNull: true
-    })
-    description!: string;
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true
+  })
+  description!: string;
 
-    @Column({
-        type: DataType.TEXT,
-        allowNull: true
-    })
-    review!: string;
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true
+  })
+  review!: string;
 
-    @Column({
-        type: DataType.BLOB,
-        allowNull: true
-    })
-    itemImage!: Buffer;
+  @Column({
+    type: DataType.BLOB,
+    allowNull: true
+  })
+  itemImage!: Buffer;
 
-    @ForeignKey(() => User)
+  @ForeignKey(() => User)
 
-    @Column(DataType.INTEGER)
-    userId!: number;
+  @Column(DataType.INTEGER)
+  userId!: number;
 
-    @BelongsTo(() => User, { onDelete: 'CASCADE' })
-    user!: User;
+  @BelongsTo(() => User, { onDelete: 'CASCADE' })
+  user!: User;
 }
