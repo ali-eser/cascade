@@ -1,9 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import LoginForm from "./components/LoginForm.tsx";
-import './App.css'
+import './styles/styles.css'
 
 function App() {
-
   return (
     <>
       <Routes>
