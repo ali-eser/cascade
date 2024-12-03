@@ -10,6 +10,7 @@ const login = async (credentials: UserToLogin)=> {
     body: JSON.stringify({ username, password }),
   });
 
+  console.log(res);
   return res.json();
 }
 
