@@ -1,4 +1,4 @@
-import {useState} from "react";
+import React, {useState} from "react";
 // import {useNavigate} from "react-router-dom";
 
 import loginService from "../services/loginService.ts";
@@ -7,10 +7,20 @@ const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const user = loginService.login({ username, password });
+      window.localStorage.setItem("loggedUser", JSON.stringify(user));
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <div>
       <h1>Cascade Login</h1>
-      <form className="login-form">
+      <form onSubmit={onSubmit} className="login-form">
         <input type="text"
                name="username"
                value={username}
