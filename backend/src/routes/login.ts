@@ -1,16 +1,22 @@
 import loginService from '../services/login';
+import { AuthenticationError } from "../services/login";
 import express from "express";
 
-const loginRouter = express.Router();
+const loginRouter: express.Router = express.Router();
 
 loginRouter.post("/", async (req, res) => {
   const { username, password } = req.body;
+  console.log(username, password)
 
   try {
     const user = await loginService.login(username, password);
     res.status(200).json(user);
   } catch (e) {
-    res.status(500).json({ errMessage: e });
+    if (e instanceof AuthenticationError) {
+      res.status(400).json({ Error: "Invalid Credentials" });
+    } else {
+      res.status(500).json({ Error: e });
+    }
   }
 })
 
