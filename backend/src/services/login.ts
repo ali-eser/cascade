@@ -1,11 +1,12 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import {User} from "../utils/db";
+import { User } from "../utils/db";
 
-class AuthenticationError extends Error {
+export class AuthenticationError extends Error {
   constructor(message: string) {
     super(message);
     this.name = "AuthenticationError";
+    this.message = message;
   };
 }
 
