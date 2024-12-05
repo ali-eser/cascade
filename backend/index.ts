@@ -4,9 +4,9 @@ import { PORT } from "./src/utils/config";
 
 const start = async () => {
   await connectToDatabase();
-  app.listen(PORT, (): void => {
-    console.log(`Server started on port ${PORT}`);
-  });
+  app.listen(PORT);
 }
 
-start();
+start()
+  .then(() => console.log("Server started on port ", PORT))
+  .catch(err => console.log("Server failed to start. Error: ", err));
