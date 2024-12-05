@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import { SECRET } from "../utils/config";
 import { User } from "../utils/db";
 
 export class AuthenticationError extends Error {
@@ -26,7 +27,7 @@ const login = async (username: string, password: string) => {
     id: user.id
   };
 
-  const token = jwt.sign(userToLogin, process.env.SECRET || "default_secret_key");
+  const token = jwt.sign(userToLogin, SECRET || "default_secret_key");
 
   return { token, user: username, id: user.id };
 };
