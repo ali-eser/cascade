@@ -19,7 +19,6 @@ const login = async (credentials: UserToLogin)=> {
   } catch (err) {
     console.log("err: ", err);
   }
-
 }
 
 export default { login };
