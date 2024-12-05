@@ -17,7 +17,7 @@ const login = async (credentials: UserToLogin)=> {
     console.log(data);
     return res.json();
   } catch (err) {
-    console.log("err: ", err);
+    console.log("Error: ", err);
   }
 }
 
