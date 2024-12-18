@@ -12,4 +12,17 @@ const fetchItem = async (id?: number) => {
   }
 };
 
-export default { fetchItem }
+const addItem = async (itemToAdd) => {
+  try {
+    const newItem = await Item.create({ itemToAdd });
+
+    // Respond with the newly created item
+    return { message: "Item added successfully!", item: newItem };
+  } catch (error) {
+    console.error("Error adding item:", error);
+    return { message: `Error adding item: ${error}` };
+  }
+}
+
+
+export default { fetchItem, addItem }
