@@ -12,7 +12,18 @@ itemsRouter.get("/", async (_req: express.Request, res: express.Response) => {
   }
 });
 
-itemsRouter.post("/", async (_req: express.Request, res: express.Response) => {
+itemsRouter.post("/", async (req: express.Request, res: express.Response) => {
+  const {name, price, description} = req.body;
+  
+  const itemToAdd = {
+    name,
+    price,
+    description
+  };
+  
+  try {
+    const newItem = await itemService.addItem(itemToAdd)
+  }
   res.send("Adding new item...");
 });
 
