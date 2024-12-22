@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcrypt";  
 import { User } from "../utils/db";
 
 const fetchUser = async (id? :number) => {
