@@ -17,7 +17,7 @@ const sequelize = new Sequelize(
   `postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}`, {
     dialect: "postgres",
     logging: false,
-    models: [User, Item]
+    models: [User, Item, Comment]
   }
 );
 
