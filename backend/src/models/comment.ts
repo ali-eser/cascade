@@ -1,7 +1,7 @@
 import { Model, DataType, Table, Column } from 'sequelize-typescript';
 
 @Table({
-  tableName: 'comments', // Use plural table name
+  tableName: 'comments',
   timestamps: true,
   underscored: true
 })
@@ -20,16 +20,16 @@ class Comment extends Model {
   text!: string;
 
   @Column({
-    type: DataType.STRING,
+    type: DataType.INTEGER,
     allowNull: false
   })
-  username!: string;
+  userId!: number;
 
   @Column({
     type: DataType.INTEGER,
     allowNull: false
   })
-  userId!: number;
+  itemId!: number;
 }
 
 export default Comment;
