@@ -1,2 +1,2 @@
 # cascade
- A simple backend for an eCommerce site
+ A backend for an eCommerce site
