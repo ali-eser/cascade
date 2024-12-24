@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
 import User from "../models/user";
 import Item from "../models/item";
+import Comment from "../models/comment";
 
 import {
   DATABASE_HOST,
@@ -23,10 +24,14 @@ const sequelize = new Sequelize(
 console.log("Database models added: ", sequelize.models);
 
 User.hasMany(Item);
+User.hasMany(Comment);
+Comment.belongsTo(User);
+Item.hasMany(Comment);
 Item.belongsTo(User);
 
 User.sync({alter: true}).then(r => console.log(r));
 Item.sync({alter: true}).then(r => console.log(r));
+Comment.sync({alter: true}).then(r => console.log(r));
 
 export const connectToDatabase = async () => {
   try {
@@ -39,4 +44,4 @@ export const connectToDatabase = async () => {
   return null;
 }
 
-export { sequelize, User, Item };
+export { sequelize, User, Item, Comment };
