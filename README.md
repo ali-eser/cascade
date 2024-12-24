@@ -1,2 +1,2 @@
 # cascade
- A platform for meeting and exchaging skills
+ A simple backend for an eCommerce site
