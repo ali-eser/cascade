@@ -12,11 +12,10 @@ const fetchItem = async (id?: number) => {
   }
 };
 
-const addItem = async (itemToAdd) => {
+const addItem = async (itemToAdd: any) => {
   try {
     const newItem = await Item.create({ itemToAdd });
-
-    // Respond with the newly created item
+    
     return { message: "Item added successfully!", item: newItem };
   } catch (error) {
     console.error("Error adding item:", error);
