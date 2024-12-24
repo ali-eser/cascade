@@ -23,8 +23,10 @@ itemsRouter.post("/", async (req: express.Request, res: express.Response) => {
   
   try {
     const newItem = await itemService.addItem(itemToAdd)
+    res.status(201).json(newItem);
+  } catch (e) {
+    res.status(500).json({ errMessage: e });
   }
-  res.send("Adding new item...");
 });
 
 export default itemsRouter;
